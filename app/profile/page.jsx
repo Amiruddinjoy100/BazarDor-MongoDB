@@ -1,3 +1,4 @@
+import LinkGoogleButton from "@/components/LinkGoogleButton";
 import Link from "next/link";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -17,6 +18,9 @@ export default async function ProfilePage() {
       <div className="py-6 space-y-5"><div className="flex gap-3 items-start"><UserRound className="text-[#709a7a]" size={20}/><div><p className="text-xs text-[#819283] mb-1">নাম</p><p className="font-bold">{user.name}</p></div></div>
       <div className="flex gap-3 items-start"><Mail className="text-[#709a7a]" size={20}/><div><p className="text-xs text-[#819283] mb-1">ইমেইল</p><p className="font-bold break-all">{user.email}</p></div></div></div>
       <Link href="/profile/update" className="btn btn-green"><Pencil size={17}/> তথ্য আপডেট করুন</Link>
+      <div className="mt-3">
+  <LinkGoogleButton />
+</div>
     </div>
   </div>;
 }
