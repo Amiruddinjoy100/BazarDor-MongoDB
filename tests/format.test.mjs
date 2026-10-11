@@ -21,3 +21,14 @@ test('respects supplied percent and direction and protected slug link', () => {
   assert.deepEqual(changeInfo({change:{dir:'up',pct:2.1}}),{dir:'up',pct:2.1});
   assert.equal(productPath({slug:'alu'}),'/product/alu');
 });
+test('keeps unpriced products after real prices and preserves the original list', () => {
+  const input = [{id:'none', today:null},{id:'a',today:'২.৫'},{id:'b',today:'১২'}];
+  assert.deepEqual(sortedProducts(input,'asc').map(p=>p.id),['a','b','none']);
+  assert.deepEqual(sortedProducts(input,'desc').map(p=>p.id),['b','a','none']);
+  assert.equal(input[0].id,'none');
+});
+test('derives a fallback percent change when the API omits the change field', () => {
+  assert.deepEqual(changeInfo({today:110,yesterday:100}),{dir:'up',pct:10});
+  assert.deepEqual(changeInfo({today:90,yesterday:100}),{dir:'down',pct:10});
+  assert.deepEqual(changeInfo({today:100,yesterday:100}),{dir:'flat',pct:0});
+});
