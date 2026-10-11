@@ -122,24 +122,7 @@ tests/                         Numeric-sorting and formatting tests
 design/                        Original supplied Figma and Penpot designs + spec
 ```
 
-## ✅ Checks and deployment
 
-```bash
-npm test    # Unit tests for price sorting, Bengali number parsing, market stats
-npm run build
-npm run start
-```
-
-**Deploy with Vercel:** push the project to **your own GitHub repository**, import it in Vercel, configure all needed environment variables under project settings (including `BETTER_AUTH_URL` for the exact HTTPS domain), and deploy. Add deployed Google/GitHub redirect URIs to their OAuth applications. Check `/`, `/category/chal`, `/product/<valid-slug>`, `/signin`, `/signup`, `/profile`, `/profile/update` and an invalid route, including after page refresh.
-
-**Source validation:** JSX/JS files were syntax-checked; `npm test` passes. Dependencies were not installed and `npm run build` was **not run** in the handoff environment because npm registry/DNS was unavailable. Run the build and an end-to-end authentication test using **your own MongoDB and OAuth credentials before submitting**. A real deployed URL and a repository link cannot be filled in until you publish them.
-
-## 📬 Submission
-
-- Live Link: *(paste your deployed Vercel URL)*
-- GitHub Repository Link: *(paste your own repo URL)*
-
-The repo includes local Git history with multiple descriptive commits. This history does not push itself to GitHub; use `git remote add origin ...` and `git push -u origin main` after creating your own repository.
 
 ---
 **BazarDor** · Built for educational use. Listed market prices depend on API source and market conditions.
