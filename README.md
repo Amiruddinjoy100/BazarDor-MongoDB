@@ -72,11 +72,6 @@ GITHUB_CLIENT_ID=
 GITHUB_CLIENT_SECRET=
 ```
 
-Replace the MongoDB URI and authentication secret with your own values. To create a random Better Auth secret, run:
-
-```bash
-node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
-```
 
 Google and GitHub credentials are needed only when you want to test those sign-in methods. Email/password authentication can work without them. Do not commit `.env.local` or real credentials to GitHub.
 
