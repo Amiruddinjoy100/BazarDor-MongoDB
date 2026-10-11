@@ -11,7 +11,6 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  // Navigation survives an API outage; page data displays a clear error state.
   const [categories, products] = await Promise.all([
     getCategories().catch(() => []),
     getProducts().catch(() => []),

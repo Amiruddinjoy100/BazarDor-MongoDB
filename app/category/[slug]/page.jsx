@@ -22,7 +22,7 @@ export default async function CategoryPage({ params }) {
     if (!category) notFound();
     products = await getCategoryProducts(slug);
   } catch (err) {
-    // Next.js's notFound() must not be swallowed by the API error fallback.
+    
     if (err?.digest?.startsWith('NEXT_HTTP_ERROR_FALLBACK;404')) throw err;
     return <DataUnavailable/>;
   }

@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
 
 function validReturnUrl(value) {
-  // Only allow local app routes as a login return destination.
   return typeof value === "string" && value.startsWith("/") && !value.startsWith("//") && !value.includes("\\") ? value : "/";
 }
 export default function AuthForm({ mode }) {

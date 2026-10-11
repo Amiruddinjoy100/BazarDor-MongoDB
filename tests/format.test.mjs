@@ -4,7 +4,7 @@ import { banglaNumber, toNumber, sortedProducts, changeInfo, marketSummary, prod
 
 test('converts Bengali numerals into numbers for price comparison', () => {
   assert.equal(toNumber('১,৮৫০'), 1850);
-  assert.equal(toNumber('১৪৮ টাকা'), NaN); // Labels are intentionally not silently parsed.
+  assert.equal(toNumber('১৪৮ টাকা'), NaN);
   assert.equal(toNumber('১,৮৫০৳'), 1850);
   assert.equal(banglaNumber(1850), '১,৮৫০');
 });
