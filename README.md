@@ -133,14 +133,58 @@ Product details and profile pages check the session on the server, including dir
 ## Project structure
 
 ```text
-app/                 Pages, layouts, dynamic routes, and auth API routes
-components/          Shared UI, forms, cards, ticker, and market table
-lib/                 Product API, formatting, MongoDB, and Better Auth
-tests/               Formatting and sorting tests
-public/              Logo and hero assets
-design/              Design reference files
-.env.example         Environment variable template
-package.json         Dependencies and scripts
+## 📁 Project Structure
+
+BazarDor-MongoDB/
+│
+├── app/                              # Next.js App Router
+│   ├── api/
+│   │   └── auth/
+│   │       └── [...all]/
+│   │           └── route.js          # Better Auth API
+│   │
+│   ├── category/
+│   │   └── [slug]/                   # Dynamic category pages
+│   │
+│   ├── product/
+│   │   └── [slug]/                   # Protected product details
+│   │
+│   ├── signin/                       # Sign-in page
+│   ├── signup/                       # Registration page
+│   │
+│   ├── profile/
+│   │   ├── page.jsx                  # User profile
+│   │   └── update/                   # Profile update page
+│   │
+│   ├── layout.jsx                    # Root layout
+│   ├── page.jsx                      # Homepage
+│   ├── loading.jsx                   # Loading skeleton
+│   └── not-found.jsx                 # Custom 404 page
+│
+├── components/                       # Reusable UI components
+│   ├── LinkGoogleButton.jsx          # Google account linking
+│   └── ...                           # Navbar, cards, forms, ticker
+│
+├── lib/                              # Application utilities
+│   ├── api.js                        # Product API integration
+│   ├── auth.js                       # Server authentication
+│   ├── auth-client.js                # Client authentication
+│   ├── mongodb.js                    # MongoDB connection
+│   └── format.js                     # Price and number formatting
+│
+├── public/                           # Images and static assets
+├── design/                           # Design references
+├── tests/
+│   └── format.test.mjs               # Utility tests
+│
+├── .env.example                      # Environment variable template
+├── .gitignore                        # Git ignored files
+├── jsconfig.json                     # Import path configuration
+├── next.config.mjs                   # Next.js configuration
+├── postcss.config.mjs                # PostCSS configuration
+├── package.json                      # Dependencies and scripts
+├── package-lock.json                 # Dependency lockfile
+└── README.md                         # Project documentation
 ```
 
 ## Deployment
