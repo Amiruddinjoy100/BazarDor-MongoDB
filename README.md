@@ -1,128 +1,600 @@
-# 🛒 বাজার দর — BazarDor
+# 🛒 বাজার দর | BazarDor
 
-**বাংলাদেশের নিত্যপ্রয়োজনীয় পণ্যের দাম এক নজরে।** A Bengali-first marketplace price tracker that shows current prices, daily increases and decreases, and comparisons across local markets. Created as an original Next.js implementation of **Programming Hero, Batch 14, Assignment 07**, using the assets supplied in the assignment ZIP.
+### Daily Essential Goods Price Tracker for Bangladesh
 
-## ✨ Features
+**বাজার দর — নিত্যপ্রয়োজনীয় পণ্যের দাম এক নজরে।**
 
-1. **Responsive homepage:** hero, primary CTA scrolling to `#সব-পণ্য`, and product cards on desktop, tablet and mobile.
-2. **Infinite price ticker:** emoji, Bengali product name, price and daily ▲/▼ percentage.
-3. **Price movers:** six largest risers and six largest fallers, calculated from API data.
-4. **Category pages:** category links and active state, valid slug handling, **Bengali-safe numerical sorting** (default / low-high / high-low).
-5. **Protected product details:** secure server-side Better Auth session check, price summary (min / max / average), historical values, and market-by-market comparison.
-6. **Better Auth + MongoDB:** email/password, Google and GitHub social login; sign out; session-aware navbar.
-7. **User profile:** view profile and update the name through `authClient.updateUser`.
-8. **Feedback & resilience:** success/error toasts, loading skeletons, Bengali currency/date formatting, responsive empty states and custom 404s.
+BazarDor is a modern, responsive, Bengali-first grocery price tracking web application built with **Next.js, Tailwind CSS, MongoDB, and Better Auth**.
 
-## 🛠 Tech stack
+The application allows users to explore essential grocery products, monitor price increases and decreases, browse products by category, compare prices across different markets, and securely access detailed product information.
 
-| Component | Technology |
-| --- | --- |
-| Frontend / routing | Next.js 16 App Router, React 19, JavaScript (JSX) |
-| Styling | Tailwind CSS 4 + custom responsive CSS |
-| Icons | Lucide React, supplied design assets |
-| Authentication | Better Auth (email/password + Google + GitHub) |
-| Persistence | **MongoDB** via `@better-auth/mongo-adapter` — no PostgreSQL/Prisma |
-| Notifications | `react-hot-toast` |
-| Hosting | Vercel (recommended) |
-| Market prices | Programming Hero BazarDor REST API |
+It also provides authentication through **Email/Password, Google, and GitHub**, along with profile management and account linking.
 
-## 🚀 Local setup
+This project was developed as part of **Programming Hero — Batch 14, Assignment 07**.
 
-Requirements: **Node.js 20.9 or newer** (Node 22 recommended), npm, and a **MongoDB Atlas** cluster or local MongoDB database. An Atlas free-tier cluster is enough for trying this project.
+---
+
+## 🌐 Live Website & Repository
+
+**Live Website:** [Visit BazarDor](https://bazar-dor-mongo-db.vercel.app)
+
+**GitHub Repository:** [BazarDor-MongoDB](https://github.com/Amiruddinjoy100/BazarDor-MongoDB)
+
+**Developer:** [Amiruddinjoy100](https://github.com/Amiruddinjoy100)
+
+---
+
+## ✨ Key Features
+
+### 1. 🏠 Responsive Homepage
+
+- Modern, Bengali-first user interface.
+- Attractive hero section with heading, subtitle, and CTA button.
+- Smooth navigation to the All Products section.
+- Responsive layout for mobile, tablet, and desktop.
+- Product information presented through reusable cards.
+
+### 2. 📈 Daily Price Increase and Decrease
+
+- Displays the top 6 products with the highest price increases.
+- Displays the top 6 products with the highest price decreases.
+- Percentage changes shown with visual indicators.
+- Clearly distinguishes rising, falling, and unchanged prices.
+- Price information is retrieved from the product API.
+
+### 3. 📢 Infinite Price Ticker
+
+- Continuous scrolling ticker displaying essential product prices.
+- Shows product emoji, Bengali name, unit, price, and percentage change.
+- Provides quick visibility into market price movements.
+
+### 4. 🛍️ Product Browsing
+
+- Fetches product information from an external REST API.
+- Displays product emoji, name, unit, and price.
+- Bengali number and currency formatting.
+- Responsive product cards.
+- Clickable cards for navigating to product details.
+
+### 5. 📂 Category-Based Product Filtering
+
+Users can browse products by category, including:
+
+- 🍚 চাল (Rice)
+- 🫘 ডাল (Lentils)
+- 🛢️ তেল (Oil)
+- 🥬 সবজি (Vegetables)
+- 🐟 মাছ (Fish)
+- 🍗 মাংস (Meat)
+- 🥛 ডিম-দুধ (Eggs & Milk)
+- 🌶️ মসলা (Spices)
+
+Category pages include dynamic routing, active navigation highlighting, loading states, and empty-state handling.
+
+### 6. 🔃 Product Price Sorting
+
+Products can be sorted using three options:
+
+- Default sorting
+- Price: Low to High
+- Price: High to Low
+
+Sorting supports Bengali numerals and uses numerical values rather than alphabetical string comparison.
+
+### 7. 📊 Detailed Product Information
+
+Each product has a dedicated details page.
+
+The page includes:
+
+- Product name and category
+- Product description and unit
+- Current price
+- Minimum price
+- Maximum price
+- Average price
+- Price comparison across markets
+- Historical price information where available
+
+Product details are protected and require user authentication.
+
+### 8. 🔐 Secure User Authentication
+
+Authentication is implemented using **Better Auth with MongoDB**.
+
+Supported methods:
+
+- Email and Password Registration
+- Email and Password Login
+- Google OAuth Login
+- GitHub OAuth Login
+- Sign Out
+- Session Persistence
+- Protected Routes
+
+Authentication information is stored in MongoDB.
+
+### 9. 🔗 Social Account Linking
+
+BazarDor supports linking social accounts to an existing user account.
+
+Features include:
+
+- Link a Google account to an existing account.
+- Authenticate using multiple supported methods.
+- Associate linked credentials with the same user ID.
+- Maintain the existing user profile after successful linking.
+
+### 10. 👤 User Profile Management
+
+Authenticated users can:
+
+- View their profile information.
+- View their name and email.
+- Update their display name.
+- Access protected account features.
+- Sign out securely.
+
+User information is updated through Better Auth.
+
+### 11. 🔔 Notifications and Loading States
+
+- Authentication success and error notifications.
+- Form validation feedback.
+- Toast notifications using React Hot Toast.
+- Skeleton loading animations.
+- Friendly error and empty-state messages.
+
+### 12. 📱 Fully Responsive Design
+
+- Mobile-friendly navigation.
+- Responsive hero section.
+- Adaptive product grids.
+- Flexible layouts across screen sizes.
+- Consistent Bengali typography and UI styling.
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Next.js 16 | Full-stack React framework |
+| React 19 | Component-based user interface |
+| JavaScript / JSX | Application development |
+| Next.js App Router | Routing and page navigation |
+| Tailwind CSS 4 | Styling and responsive design |
+| MongoDB Atlas | Cloud database |
+| Better Auth | Authentication and sessions |
+| Better Auth MongoDB Adapter | Database integration |
+| Google OAuth 2.0 | Google authentication |
+| GitHub OAuth | GitHub authentication |
+| Lucide React | Icons |
+| React Hot Toast | Notifications |
+| REST API | Product and market data |
+| Vercel | Deployment and hosting |
+| Git & GitHub | Version control |
+
+---
+
+## 📁 Project Structure
+
+```text
+BazarDor-MongoDB/
+│
+├── app/
+│   ├── page.jsx
+│   ├── layout.jsx
+│   ├── loading.jsx
+│   ├── not-found.jsx
+│   │
+│   ├── category/
+│   │   └── [slug]/
+│   │
+│   ├── product/
+│   │   └── [slug]/
+│   │
+│   ├── signin/
+│   ├── signup/
+│   │
+│   ├── profile/
+│   │   ├── page.jsx
+│   │   └── update/
+│   │
+│   └── api/
+│       └── auth/
+│           └── [...all]/
+│
+├── components/
+│   └── Reusable UI Components
+│
+├── lib/
+│   ├── api.js
+│   ├── auth.js
+│   ├── auth-client.js
+│   ├── mongodb.js
+│   └── format.js
+│
+├── public/
+│   └── Static Assets
+│
+├── tests/
+│   └── Formatting and Sorting Tests
+│
+├── design/
+│   └── Design References
+│
+├── .env.example
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── next.config.mjs
+└── README.md
+```
+
+---
+
+## 🚀 Installation and Local Setup
+
+Follow these steps to run the project locally.
+
+### Prerequisites
+
+Make sure the following are available:
+
+- Node.js 20.9 or higher
+- npm
+- Git
+- MongoDB Atlas account or a local MongoDB server
+- Google and GitHub OAuth credentials for social login
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/Amiruddinjoy100/BazarDor-MongoDB.git
+```
+
+### Step 2: Navigate to the Project
+
+```bash
+cd BazarDor-MongoDB
+```
+
+### Step 3: Install Dependencies
 
 ```bash
 npm install
-cp .env.example .env.local
-# Edit .env.local with your real values
+```
+
+### Step 4: Create Environment Variables
+
+Create a `.env.local` file in the project root.
+
+You can copy the `.env.example` file.
+
+On Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env.local
+```
+
+Update `.env.local` with your credentials:
+
+```dotenv
+# Product API
+BAZARDOR_API_URL=https://api.abcz.workers.dev/api/bazardor
+
+# MongoDB
+MONGODB_URI=YOUR_MONGODB_CONNECTION_STRING
+MONGODB_DB=bazardor
+
+# Better Auth
+BETTER_AUTH_SECRET=YOUR_SECURE_RANDOM_SECRET
+BETTER_AUTH_URL=http://localhost:3000
+
+# Google OAuth
+GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET
+
+# GitHub OAuth
+GITHUB_CLIENT_ID=YOUR_GITHUB_CLIENT_ID
+GITHUB_CLIENT_SECRET=YOUR_GITHUB_CLIENT_SECRET
+```
+
+Replace all placeholder values with your actual configuration.
+
+**Important:** Never upload `.env.local` to GitHub or expose database passwords and OAuth client secrets publicly.
+
+### Step 5: Start the Development Server
+
+```bash
 npm run dev
 ```
 
-On Windows, use `copy .env.example .env.local` in Command Prompt or `Copy-Item .env.example .env.local` in PowerShell. Visit `http://localhost:3000`.
+Open your browser and visit:
 
-### Environment variables
+http://localhost:3000
 
-| Name | Required? | Example / purpose |
-| --- | --- | --- |
-| `MONGODB_URI` | **Yes** | MongoDB Atlas connection string, with a database user that has read/write permission |
-| `MONGODB_DB` | Optional | `bazardor` (database name, used for Better Auth's collections) |
-| `BETTER_AUTH_SECRET` | **Yes** | High-entropy key, at least 32 random characters |
-| `BETTER_AUTH_URL` | **Yes** | `http://localhost:3000` locally; deployed HTTPS origin on Vercel |
-| `BAZARDOR_API_URL` | Recommended | `https://api.abcz.workers.dev/api/bazardor` |
-| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | For Google login | From Google Cloud Console |
-| `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | For GitHub login | From GitHub Developer Settings → OAuth Apps |
+---
 
-Generate the secret on your machine:
+## 🗄️ MongoDB Database Configuration
 
-```bash
-node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
+This project uses MongoDB for storing authentication-related information.
+
+### MongoDB Setup
+
+1. Create a MongoDB Atlas project and cluster.
+2. Create a database user with appropriate permissions.
+3. Configure network access.
+4. Copy the MongoDB connection string.
+5. Add the connection string to `MONGODB_URI`.
+6. Set `MONGODB_DB=bazardor`.
+7. Start the application.
+
+Better Auth automatically manages the required authentication collections, including users, accounts, and sessions.
+
+**Database:** `bazardor`
+
+**Database Adapter:** `@better-auth/mongo-adapter`
+
+No PostgreSQL, Prisma, or SQL database is required.
+
+---
+
+## 🔑 Google & GitHub Authentication Setup
+
+### Google OAuth
+
+1. Open [Google Cloud Console](https://console.cloud.google.com/).
+2. Create or select a Google Cloud project.
+3. Configure Google Auth Platform.
+4. Create an OAuth Client ID using the Web Application type.
+5. Add the authorized JavaScript origins and redirect URIs.
+6. Copy the Client ID and Client Secret into `.env.local`.
+
+**Local Redirect URI:**
+
+```text
+http://localhost:3000/api/auth/callback/google
 ```
 
-Never commit `.env.local` or paste real keys into public GitHub. The `.gitignore` already excludes secrets. Without `MONGODB_URI`, the application uses local MongoDB for development; you must start a local MongoDB service, or specify an Atlas URI. Without OAuth client credentials, email/password sign-in works but social login cannot be completed.
+**Production Redirect URI:**
 
-### MongoDB setup (Atlas)
+```text
+https://bazar-dor-mongo-db.vercel.app/api/auth/callback/google
+```
 
-1. Create a cluster at [MongoDB Atlas](https://www.mongodb.com/atlas), then create a database user.
-2. In **Network Access**, allow the IP addresses that need database access. For serverless Vercel, follow MongoDB's recommended configuration; restrict access as appropriate for production.
-3. Copy the **Drivers** connection string, insert your database username/password (URL-encode special characters in the password), and put it in `MONGODB_URI`.
-4. Register your first user on `/signup`. **Better Auth creates the `user`, `account`, `session` and related collections automatically**. You do not need Prisma, Drizzle, SQL tables, or database migrations.
-5. Sign in on `/signin`, visit a product detail page, and use `/profile/update` to edit the stored name.
+Configure the matching origins for local and production environments.
 
-### Google and GitHub OAuth
+### GitHub OAuth
 
-Create OAuth applications and configure these exact local callbacks:
+1. Open [GitHub Developer Settings](https://github.com/settings/developers).
+2. Navigate to OAuth Apps.
+3. Create a new OAuth application.
+4. Configure the application homepage and redirect URIs.
+5. Generate a Client Secret.
+6. Add the GitHub Client ID and Secret to `.env.local`.
 
-- Google: `http://localhost:3000/api/auth/callback/google`
-- GitHub: `http://localhost:3000/api/auth/callback/github`
+**Local Redirect URI:**
 
-On the deployed project, replace `http://localhost:3000` with `https://YOUR-PROJECT.vercel.app`. Google may require an OAuth consent screen and test users. Configure the same deployed host in `BETTER_AUTH_URL`; don't include a trailing path like `/api/auth`.
+```text
+http://localhost:3000/api/auth/callback/github
+```
 
-## 📡 Assignment API
+**Production Redirect URI:**
 
-Base URL from the original assignment:
+```text
+https://bazar-dor-mongo-db.vercel.app/api/auth/callback/github
+```
+
+GitHub Login uses Better Auth to authenticate users and manage their sessions.
+
+---
+
+## 📡 Product API
+
+BazarDor retrieves grocery product data from an external REST API.
+
+**API Base URL:**
 
 ```text
 https://api.abcz.workers.dev/api/bazardor
 ```
 
-The assignment also supplies `https://api.api-store.workers.dev/api/bazardor`. The tracking URL shared in the prompt points toward `https://openapi.programming-hero.com/api/bazardor` but was not reachable in the environment used to prepare this handoff. Change `BAZARDOR_API_URL` if a different documented mirror is working for you. No fake product prices are inserted: when the API is unavailable, the page displays a clear error state.
+### Available Endpoints
 
-| Endpoint | Purpose |
-| --- | --- |
-| `/products` | All market products |
-| `/products?category=chal` | Category-filtered products |
-| `/products/1` | Single product by numeric ID (supported by API) |
-| `/categories` | Available categories |
-| `/categories/chal` | Category detail (supported by API) |
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/products` | Retrieve all products |
+| GET | `/products?category=chal` | Filter products by category |
+| GET | `/products/1` | Retrieve a single product |
+| GET | `/categories` | Retrieve available categories |
+| GET | `/categories/chal` | Retrieve a specific category |
 
-App product routes are `/product/[slug]`. The app resolves slugs against the all-products list so they work independently of the API's numeric-ID endpoint.
+The application uses API response data to display grocery prices, categories, price changes, and market comparisons.
 
-**Expected product fields:** `id`, `slug`, `nameBn`, `image` (emoji), `category`, `categoryNameBn`, `categoryIcon`, `unit`, `today`, `yesterday`, `lastWeek`, `lastMonth`, `change` (`dir`, `pct`), and `markets` (array of `market`, `division`, `min`, `max`). Market averages in the UI are calculated as the average of each market's min/max midpoint. This is labeled in the interface.
-
-## 🗂 Directory structure
-
-```text
-app/
-  page.jsx                     Homepage
-  loading.jsx                  Home skeleton
-  not-found.jsx                Custom 404 page
-  category/[slug]/             Dynamic category + skeleton
-  product/[slug]/              Secure product detail + skeleton
-  signin/ signup/              Email and social sign-in forms
-  profile/                     Protected user profile
-    update/                    Protected name update
-  api/auth/[...all]/route.js   Better Auth API handler
-components/                    Shared header, ticker, cards, forms, tables
-lib/
-  api.js                       Server-side market API requests
-  mongodb.js                   MongoDB client reuse
-  auth.js / auth-client.js     Better Auth server/client
-  format.js                    Bengali numbers, pricing, change and sorting
-public/                        Hero image and logo
-tests/                         Numeric-sorting and formatting tests
-design/                        Original supplied Figma and Penpot designs + spec
-```
-
-
+Product information depends on the availability and accuracy of the external API.
 
 ---
-**BazarDor** · Built for educational use. Listed market prices depend on API source and market conditions.
+
+## 🛡️ Protected Routes
+
+Some routes require an authenticated user.
+
+| Route | Access |
+|---|---|
+| `/` | Public |
+| `/category/[slug]` | Public |
+| `/signin` | Public |
+| `/signup` | Public |
+| `/product/[slug]` | Login Required |
+| `/profile` | Login Required |
+| `/profile/update` | Login Required |
+
+Unauthenticated users attempting to access protected pages are redirected to the sign-in page.
+
+Session management is handled by Better Auth.
+
+---
+
+## 🧪 Testing
+
+The project includes automated tests for formatting and sorting utilities.
+
+Run tests using:
+
+```bash
+npm test
+```
+
+To check the production build locally:
+
+```bash
+npm run build
+```
+
+To start the production server after building:
+
+```bash
+npm run start
+```
+
+### Manual Testing
+
+The application can also be tested by checking:
+
+- Product cards and category navigation.
+- Price sorting with Bengali numbers.
+- Product details and protected-route redirects.
+- Email/Password registration and login.
+- Google and GitHub OAuth.
+- Session persistence after page refresh.
+- Profile name updates.
+- Responsive layout across multiple screen sizes.
+- Invalid routes and error handling.
+
+---
+
+## ☁️ Deployment
+
+The application is deployed on **Vercel**.
+
+### Deployment Steps
+
+1. Push the project to GitHub.
+2. Sign in to [Vercel](https://vercel.com/).
+3. Import the GitHub repository.
+4. Choose Next.js as the framework.
+5. Configure the required environment variables.
+6. Set `BETTER_AUTH_URL` to the production domain.
+7. Configure production callbacks in Google and GitHub OAuth settings.
+8. Deploy or redeploy the application.
+
+### Required Vercel Environment Variables
+
+```text
+MONGODB_URI
+MONGODB_DB
+BETTER_AUTH_SECRET
+BETTER_AUTH_URL
+BAZARDOR_API_URL
+GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET
+GITHUB_CLIENT_ID
+GITHUB_CLIENT_SECRET
+```
+
+**Production URL:**
+
+https://bazar-dor-mongo-db.vercel.app
+
+Vercel connects to the GitHub repository and can automatically deploy new changes pushed to the configured production branch.
+
+---
+
+## 🎯 Assignment Requirements Covered
+
+| Requirement | Implementation |
+|---|---|
+| Responsive Navbar | ✅ Implemented |
+| Hero Section | ✅ Implemented |
+| Infinite Price Ticker | ✅ Implemented |
+| Top Price Risers | ✅ Implemented |
+| Top Price Fallers | ✅ Implemented |
+| All Products Section | ✅ Implemented |
+| Dynamic Product Details | ✅ Implemented |
+| Category Filtering | ✅ Implemented |
+| Price Sorting | ✅ Implemented |
+| Email/Password Authentication | ✅ Implemented |
+| Google Authentication | ✅ Implemented |
+| GitHub Authentication | ✅ Implemented |
+| MongoDB Integration | ✅ Implemented |
+| Protected Routes | ✅ Implemented |
+| Profile Update | ✅ Implemented |
+| Loading Skeletons | ✅ Implemented |
+| Toast Notifications | ✅ Implemented |
+| Custom 404 Page | ✅ Implemented |
+| Responsive Design | ✅ Implemented |
+| Meaningful Git Commits | ✅ 8+ Commits |
+| GitHub Repository | ✅ Available |
+| Vercel Deployment | ✅ Deployed |
+
+---
+
+## 🌟 Future Improvements
+
+Potential enhancements include:
+
+- Product search functionality.
+- Product watchlists and favorites.
+- Price history charts.
+- User-defined price alerts.
+- Market comparison filters.
+- Additional districts and locations.
+- Improved accessibility and UI personalization.
+- Advanced market price analytics.
+
+---
+
+## 📌 Important Notes
+
+- Grocery prices are obtained from an external API.
+- Prices may vary across markets and change over time.
+- API availability may affect the displayed information.
+- Product prices are informational and should not be treated as guaranteed live market quotations.
+- MongoDB credentials and authentication secrets must be kept private.
+- Social login requires correctly configured OAuth applications and callback URLs.
+
+---
+
+## 👨‍💻 Developer
+
+**Developed by Amir Uddin Joy**
+
+GitHub: [@Amiruddinjoy100](https://github.com/Amiruddinjoy100)
+
+Project: [BazarDor-MongoDB](https://github.com/Amiruddinjoy100/BazarDor-MongoDB)
+
+Live Website: [BazarDor](https://bazar-dor-mongo-db.vercel.app)
+
+---
+
+## 📚 Acknowledgements
+
+- Programming Hero — Batch 14, Assignment 07
+- Next.js and React
+- MongoDB Atlas
+- Better Auth
+- Tailwind CSS
+- Google and GitHub OAuth
+- Vercel
+
+Developed for educational and learning purposes.
+
+---
+
+### 🛒 BazarDor — Know the Price, Shop Smarter.
+
+**বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে।**
+
+⭐ If you find this project useful, consider starring the GitHub repository.
